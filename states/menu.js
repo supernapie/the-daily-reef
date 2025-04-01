@@ -15,12 +15,7 @@ menu.on('start', () => {
     });
 });
 
-let intro = `The Tridecomino Coral Reef.
-This mysterious reef is constantly
-changing, but somehow the shape is
-always a polyomino of 13 squares.
-
-The many tourist boats are damaging
+let intro = `The many tourist boats are damaging
 the reef. It is your job to chase
 them away by gently tapping on them.
 
