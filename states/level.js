@@ -2,6 +2,7 @@ import state from '../lib/statemachine/state.js';
 import ft from '../lib/draw/text.js';
 import createBoat from '../sprites/boat.js';
 import createCam from '../lib/cam.js';
+import mulberry from '../lib/math/mulberry.js';
 
 let level = state();
 
@@ -34,13 +35,17 @@ level.on('start', () => {
     nRows = 14;
     nCols = 14;
 
+    // Number of days since 2025-01-01
+    let day = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    let getRandom = mulberry(day);
+
     // Reset all to 0
     grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
 
     // Add one number 13 to the grid in a random position
     let position = {
-        x: Math.floor(Math.random() * nCols),
-        y: Math.floor(Math.random() * nRows)
+        x: Math.floor(getRandom() * nCols),
+        y: Math.floor(getRandom() * nRows)
     };
     grid[position.y][position.x] = 13;
 
@@ -53,7 +58,7 @@ level.on('start', () => {
     ];
     let nMino = 1;
     let nMinoMax = 13;
-    let direction = directions[Math.floor(Math.random() * directions.length)];
+    let direction = directions[Math.floor(getRandom() * directions.length)];
     while (nMino < nMinoMax) {
         let newPosition = {
             x: position.x + direction.dx,
@@ -76,7 +81,7 @@ level.on('start', () => {
             // to prevent being closed in by the polyomino
             // only change direction if there is a free cell
             // To ponder about: does this create all possible polyominos?
-            direction = directions[Math.floor(Math.random() * directions.length)];
+            direction = directions[Math.floor(getRandom() * directions.length)];
             nMino++;
         }
         position = newPosition;
@@ -194,7 +199,7 @@ level.on('start', () => {
     for (let y = 0; y < nRows; y++) {
         for (let x = 0; x < nCols; x++) {
             if (grid[y][x] === 0) {
-                let angle = angles[Math.floor(Math.random() * angles.length)];
+                let angle = angles[Math.floor(getRandom() * angles.length)];
                 let boat = createBoat({x: x * 40, y: y * 40, a: angle, gx: x, gy: y});
                 boats.push(boat);
                 grid[y][x] = 1;
