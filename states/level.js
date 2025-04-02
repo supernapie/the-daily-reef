@@ -12,7 +12,7 @@ let nRows = 14;
 let nCols = 14;
 let grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
 
-let cam = createCam();
+let camera = createCam({state: level});
 let menubutton = createMenubutton({state: level});
 
 let boats = [];
@@ -20,8 +20,6 @@ let boats = [];
 level.on('start', () => {
 
     let {vw, vh} = level.last('resize');
-    cam.start({vw, vh});
-    menubutton.start({vw, vh});
 
     nRows = 14;
     nCols = 14;
@@ -210,8 +208,8 @@ level.on('start', () => {
 
     let clickGrid = e => {
         let {x, y} = e;
-        let tx = x + cam.cx;
-        let ty = y + cam.cy;
+        let tx = x + camera.cx;
+        let ty = y + camera.cy;
         while (tx < 0) {
             tx += 40 * nCols;
         }
@@ -229,8 +227,8 @@ level.on('start', () => {
             let boat = boats.find(b => b.gx === gx && b.gy === gy);
             if (boat) {
                 let {dx, dy} = boat.move(grid);
-                cam.target.x += dx * 40;
-                cam.target.y += dy * 40;
+                camera.target.x += dx * 40;
+                camera.target.y += dy * 40;
             }
         }
         if (value === 14) {
@@ -245,18 +243,13 @@ level.on('start', () => {
         }
     };
     level.on('pointerup', clickGrid);
-
 });
-
-level.on('resize', cam.resize);
-level.on('resize', menubutton.resize);
-level.on('step', cam.step);
 
 let offCanvas = new OffscreenCanvas(40, 40);
 let offCtx = offCanvas.getContext('2d');
 
 level.on('draw', e => {
-    let {ctx} = e;
+    let {ctx, cam} = e;
     let {vw, vh} = level.last('resize');
 
     offCanvas.width = 40 * nCols;

@@ -1,4 +1,3 @@
-import machine from '../lib/statemachine/machine.js';
 import path from '../lib/draw/path.js';
 import pointarea from '../lib/pointer/rect.js';
 
@@ -20,16 +19,18 @@ export default (options = {}) => {
     Object.assign(options, defaults);
     let btn = path(options);
     pointarea(btn);
-    btn.resize = e => {
+    let resize = e => {
         let {vw, vh} = e;
         btn.x = vw - btn.w - margin;
         btn.y = margin;
     };
-    btn.start = e => {
-        btn.resize(e);
-    };
+    btn.state.on('resize', resize);
+    btn.state.on('start', e => {
+        let {vw, vh} = btn.state.last('resize');
+        resize({vw, vh});
+    });
     btn.pointer.on('pointerup', () => {
-        machine.start('menu');
+        btn.state.stop('menu');
     });
     return btn;
 };
