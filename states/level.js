@@ -1,5 +1,4 @@
 import state from '../lib/statemachine/state.js';
-import ft from '../lib/draw/text.js';
 import createBoat from '../sprites/boat.js';
 import createMenubutton from '../sprites/menubutton.js';
 import createCam from '../lib/cam.js';

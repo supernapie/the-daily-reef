@@ -25,10 +25,6 @@ export default (options = {}) => {
         btn.y = margin;
     };
     btn.state.on('resize', resize);
-    btn.state.on('start', e => {
-        let {vw, vh} = btn.state.last('resize');
-        resize({vw, vh});
-    });
     btn.pointer.on('pointerup', () => {
         btn.state.stop('menu');
     });
