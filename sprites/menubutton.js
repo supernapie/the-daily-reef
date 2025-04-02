@@ -29,7 +29,6 @@ export default (options = {}) => {
         btn.resize(e);
     };
     btn.pointer.on('pointerup', () => {
-        console.log('menu button clicked');
         machine.start('menu');
     });
     return btn;

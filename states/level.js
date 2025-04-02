@@ -7,22 +7,10 @@ import mulberry from '../lib/math/mulberry.js';
 
 let level = state();
 
-let score = 0;
-
-try {
-    score = localStorage.getItem('number_of_daily_reefs_saved_in_2025') || '0';
-    score = Number(score);
-} catch (err) {
-    score = 0;
-    console.warn(err);
-}
-
 // a grid
 let nRows = 14;
 let nCols = 14;
 let grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
-
-let textTiles = grid.map((row, y) => row.map((value, x) => ft({text: String(value), x: x * 40, y: y * 40, lineHeight: 2.5})));
 
 let cam = createCam();
 let menubutton = createMenubutton({state: level});
@@ -191,9 +179,6 @@ level.on('start', () => {
     grid[start.y][start.x] = 0;
     grid[target.y][target.x] = 0;
 
-    // Update the textTiles
-    textTiles = grid.map((row, y) => row.map((value, x) => ft({text: String(value), x: x * 40, y: y * 40})));
-
     level.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Aqua', 'c14': 'Aqua'});
 
     // on each 0 add a boat
@@ -223,7 +208,7 @@ level.on('start', () => {
     // Now move the boats a bit before starting
     boats.forEach(boat => boat.move(grid));
 
-    level.on('pointerup', e => {
+    let clickGrid = e => {
         let {x, y} = e;
         let tx = x + cam.cx;
         let ty = y + cam.cy;
@@ -254,25 +239,13 @@ level.on('start', () => {
             if (grid.flat().includes(14)) {
                 return;
             }
-            level.off('pointerup');
+            level.off('pointerup', clickGrid);
             // show solution
             level.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Coral', 'c14': 'Coral'});
-            score++;
-            try {
-                localStorage.setItem('number_of_tridecomino_coral_reefs_saved_in_2024', score);
-            } catch (err) {
-                console.warn(err);
-            }
-            textTiles.forEach(row => row.forEach(
-            tile => tile.text = tile.text === '13' ? '#' + score : ''
-            ));
-            printNumbers = true;
-            level.once('pointerup', () => {
-                level.stop('level');
-                printNumbers = false;
-            });
         }
-    });
+    };
+    level.on('pointerup', clickGrid);
+
 });
 
 level.on('resize', cam.resize);
@@ -281,7 +254,6 @@ level.on('step', cam.step);
 
 let offCanvas = new OffscreenCanvas(40, 40);
 let offCtx = offCanvas.getContext('2d');
-let printNumbers = false;
 
 level.on('draw', e => {
     let {ctx} = e;
@@ -296,13 +268,6 @@ level.on('draw', e => {
         }
     }
     boats.forEach(boat => boat.draw({ctx: offCtx}));
-    
-    if (printNumbers) {
-        offCtx.fillStyle = 'Seashell';
-        textTiles.forEach(row => row.forEach(
-            tile => {tile.draw({ctx: offCtx})}
-        ));
-    }
     
     let bgPattern = ctx.createPattern(offCanvas, 'repeat');
     ctx.fillStyle = bgPattern;
