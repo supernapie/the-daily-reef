@@ -5,12 +5,12 @@ import tappable from '../lib/pointer/rect.js';
 
 let menu = state();
 
-let boat = createBoat();
+let boat = createBoat({state: menu});
 tappable(boat);
 
 menu.on('start', () => {
     menu.emit('color', { stroke: 'Coral', fill: 'Coral', bg: 'white' });
-    boat.pointer.once('tap', () => {
+    boat.pointer.once('pointerup', () => {
         menu.stop('level');
     });
 });

@@ -1,6 +1,7 @@
 import state from '../lib/statemachine/state.js';
 import ft from '../lib/draw/text.js';
 import createBoat from '../sprites/boat.js';
+import createMenubutton from '../sprites/menubutton.js';
 import createCam from '../lib/cam.js';
 import mulberry from '../lib/math/mulberry.js';
 
@@ -24,6 +25,7 @@ let grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
 let textTiles = grid.map((row, y) => row.map((value, x) => ft({text: String(value), x: x * 40, y: y * 40, lineHeight: 2.5})));
 
 let cam = createCam();
+let menubutton = createMenubutton({state: level});
 
 let boats = [];
 
@@ -31,6 +33,7 @@ level.on('start', () => {
 
     let {vw, vh} = level.last('resize');
     cam.start({vw, vh});
+    menubutton.start({vw, vh});
 
     nRows = 14;
     nCols = 14;
@@ -220,7 +223,7 @@ level.on('start', () => {
     // Now move the boats a bit before starting
     boats.forEach(boat => boat.move(grid));
 
-    level.on('tap', e => {
+    level.on('pointerup', e => {
         let {x, y} = e;
         let tx = x + cam.cx;
         let ty = y + cam.cy;
@@ -251,7 +254,7 @@ level.on('start', () => {
             if (grid.flat().includes(14)) {
                 return;
             }
-            level.off('tap');
+            level.off('pointerup');
             // show solution
             level.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Coral', 'c14': 'Coral'});
             score++;
@@ -264,7 +267,7 @@ level.on('start', () => {
             tile => tile.text = tile.text === '13' ? '#' + score : ''
             ));
             printNumbers = true;
-            level.once('tap', () => {
+            level.once('pointerup', () => {
                 level.stop('level');
                 printNumbers = false;
             });
@@ -273,6 +276,7 @@ level.on('start', () => {
 });
 
 level.on('resize', cam.resize);
+level.on('resize', menubutton.resize);
 level.on('step', cam.step);
 
 let offCanvas = new OffscreenCanvas(40, 40);
@@ -304,6 +308,8 @@ level.on('draw', e => {
     ctx.fillStyle = bgPattern;
     ctx.translate(-cam.cx, -cam.cy);
     ctx.fillRect(cam.cx, cam.cy, vw, vh);
+    ctx.translate(cam.cx, cam.cy);
+    menubutton.draw({ctx});
 });
 
 export default level;
