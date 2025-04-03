@@ -25,6 +25,7 @@ export default (options = {}) => {
         obj.y = margin;
     };
     obj.state.on('resize', resize);
+    obj.state.on('draw', obj.draw);
     obj.pointer.on('pointerup', () => {
         obj.state.stop('menu');
     });
