@@ -1,6 +1,6 @@
 import state from '../lib/statemachine/state.js';
-import createBoat from '../sprites/boat.js';
-import createMenubutton from '../sprites/menubutton.js';
+import createBoat from '../obj/boat.js';
+import createMenubutton from '../obj/menubutton.js';
 import createCam from '../lib/cam.js';
 import mulberry from '../lib/math/mulberry.js';
 
