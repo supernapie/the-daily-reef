@@ -5,7 +5,7 @@ let d = 'M20 0C8.955 0 0 8.955 0 20s8.955 20 20 20 20-8.955 20-20S31.045 0 20 0Z
 
 let margin = 8;
 
-export default (options = {}) => {
+export default (obj = {}) => {
     let defaults = {
         paths: [d],
         x: 0,
@@ -15,9 +15,9 @@ export default (options = {}) => {
         a: 0,
         fills: ['black']
     };
-    Object.assign(defaults, options);
-    Object.assign(options, defaults);
-    let obj = path(options);
+    Object.assign(defaults, obj);
+    Object.assign(obj, defaults);
+    path(obj);
     pointarea(obj);
     let resize = e => {
         let {vw, vh} = e;

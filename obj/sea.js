@@ -1,5 +1,4 @@
 import createBoat from '../obj/boat.js';
-import createCam from '../lib/cam.js';
 import mulberry from '../lib/math/mulberry.js';
 
 export default (obj = {}) => {
@@ -8,8 +7,6 @@ export default (obj = {}) => {
     let nRows = 14;
     let nCols = 14;
     let grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
-
-    let camera = createCam({state: obj.state});
 
     let boats = [];
 
@@ -203,9 +200,9 @@ export default (obj = {}) => {
         boats.forEach(boat => boat.move(grid));
 
         let clickGrid = e => {
-            let {x, y} = e;
-            let tx = x + camera.cx;
-            let ty = y + camera.cy;
+            let {x, y, cam} = e;
+            let tx = x + cam.cx;
+            let ty = y + cam.cy;
             while (tx < 0) {
                 tx += 40 * nCols;
             }
@@ -223,8 +220,8 @@ export default (obj = {}) => {
                 let boat = boats.find(b => b.gx === gx && b.gy === gy);
                 if (boat) {
                     let {dx, dy} = boat.move(grid);
-                    camera.target.x += dx * 40;
-                    camera.target.y += dy * 40;
+                    cam.target.x += dx * 40;
+                    cam.target.y += dy * 40;
                 }
             }
             if (value === 14) {
@@ -264,5 +261,4 @@ export default (obj = {}) => {
         ctx.fillRect(cam.cx, cam.cy, vw, vh);
         ctx.translate(cam.cx, cam.cy);
     });
-
 };
