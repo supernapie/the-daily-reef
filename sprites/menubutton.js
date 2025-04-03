@@ -17,16 +17,16 @@ export default (options = {}) => {
     };
     Object.assign(defaults, options);
     Object.assign(options, defaults);
-    let btn = path(options);
-    pointarea(btn);
+    let obj = path(options);
+    pointarea(obj);
     let resize = e => {
         let {vw, vh} = e;
-        btn.x = vw - btn.w - margin;
-        btn.y = margin;
+        obj.x = vw - obj.w - margin;
+        obj.y = margin;
     };
-    btn.state.on('resize', resize);
-    btn.pointer.on('pointerup', () => {
-        btn.state.stop('menu');
+    obj.state.on('resize', resize);
+    obj.pointer.on('pointerup', () => {
+        obj.state.stop('menu');
     });
-    return btn;
+    return obj;
 };
