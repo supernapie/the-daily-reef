@@ -242,7 +242,6 @@ export default (obj = {}) => {
     });
 
     offCanvas(obj);
-
     obj.state.on('draw', e => {
         let {ctx} = e;
 
