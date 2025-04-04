@@ -200,9 +200,7 @@ export default (obj = {}) => {
         boats.forEach(boat => boat.move(grid));
 
         let clickGrid = e => {
-            let {x, y, cam} = e;
-            let tx = x + cam.cx;
-            let ty = y + cam.cy;
+            let {cam, cx: tx, cy: ty} = e;
             while (tx < 0) {
                 tx += 40 * nCols;
             }
@@ -242,7 +240,7 @@ export default (obj = {}) => {
     let offCtx = offCanvas.getContext('2d');
 
     obj.state.on('draw', e => {
-        let {ctx, cam} = e;
+        let {ctx, cx, cy} = e;
         let {vw, vh} = obj.state.last('resize');
 
         offCanvas.width = 40 * nCols;
@@ -257,8 +255,8 @@ export default (obj = {}) => {
         
         let bgPattern = ctx.createPattern(offCanvas, 'repeat');
         ctx.fillStyle = bgPattern;
-        ctx.translate(-cam.cx, -cam.cy);
-        ctx.fillRect(cam.cx, cam.cy, vw, vh);
-        ctx.translate(cam.cx, cam.cy);
+        ctx.translate(-cx, -cy);
+        ctx.fillRect(cx, cy, vw, vh);
+        ctx.translate(cx, cy);
     });
 };
