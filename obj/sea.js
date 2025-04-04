@@ -20,7 +20,7 @@ export default (obj = {}) => {
     nCols = 14;
 
     // Number of days since 2025-01-01
-    let day = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    let day = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
     let getRandom = mulberry(day);
 
     // Reset all to 0
