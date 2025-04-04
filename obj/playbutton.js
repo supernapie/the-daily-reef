@@ -1,3 +1,5 @@
+import data from '../lib/data/kv.js';
+import text from '../lib/draw/text.js';
 import path from '../lib/draw/path.js';
 import pointarea from '../lib/pointer/rect.js';
 
@@ -6,30 +8,54 @@ let t = 'M 64 32 L 192 64 L 64 96 Z';
 
 export default (obj = {}) => {
     let defaults = {
-        paths: [r, t],
+        paths: [r],
         x: 0,
         y: 0,
         w: 256,
         h: 128,
         a: 0,
-        fills: ['black', 'white']
+        fills: ['black']
     };
     Object.assign(defaults, obj);
     Object.assign(obj, defaults);
     path(obj);
     pointarea(obj);
-    let resize = e => {
+    let day = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    let achievements = data.getItem('achievements') || [];
+    let done = true;
+    if (achievements.indexOf(day) === -1) {
+        done = false;
+    }
+    let txt = text({state: obj.state, fill: 'white', text: 'Play'});
+    obj.state.on('resize', e => {
         let {vw, vh} = e;
         obj.x = vw / 2 - obj.w / 2;
         obj.y = vh / 2 - obj.h / 2;
-    };
-    obj.state.on('resize', resize);
-    obj.pointer.on('pointerdown', () => {
-        obj.fills = ['white', 'black'];
     });
-    obj.pointer.on('pointerup', () => {
-        obj.fills = ['black', 'white'];
-        obj.state.stop('level');
+    obj.state.on('step', e => {
+        if (done) {
+            // hours until midnight (padded to 2 digits)
+            let hours = String(24 - new Date().getHours()).padStart(2, '0');
+            let minutes = String(60 - new Date().getMinutes()).padStart(2, '0');
+            let seconds = String(60 - new Date().getSeconds()).padStart(2, '0');
+            let time = `${hours}:${minutes}:${seconds}`;
+            let newDay = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+            txt.text = time;
+            if (newDay !== day) {
+                obj.state.stop('level');
+            }
+        }
+        txt.x = obj.x + obj.w / 2 - txt.w / 2;
+        txt.y = obj.y + obj.h / 2 - txt.h / 2;
     });
+    if (!done) {
+        obj.pointer.on('pointerdown', () => {
+            obj.fills = ['white'];
+        });
+        obj.pointer.on('pointerup', () => {
+            obj.fills = ['black'];
+            obj.state.stop('level');
+        });
+    }
     return obj;
 };

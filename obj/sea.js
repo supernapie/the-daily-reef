@@ -1,4 +1,5 @@
 import offCanvas from '../lib/canvas/off.js';
+import data from '../lib/data/kv.js';
 import createBoat from '../obj/boat.js';
 import mulberry from '../lib/math/mulberry.js';
 
@@ -223,7 +224,6 @@ export default (obj = {}) => {
     boats.forEach(boat => boat.move(grid));
 
     let clickGrid = e => {
-        console.log('clickGrid', e);
         let {cam, cx: tx, cy: ty} = e;
         while (tx < 0) {
             tx += 40 * nCols;
@@ -255,6 +255,9 @@ export default (obj = {}) => {
             obj.state.off('pointerup', clickGrid);
             // show solution
             obj.state.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Coral', 'c14': 'Coral'});
+            let achievements = data.getItem('achievements') || [];
+            achievements.push(day);
+            data.setItem('achievements', achievements);
         }
     };
     obj.state.on('pointerup', clickGrid);
