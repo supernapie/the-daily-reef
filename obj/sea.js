@@ -1,3 +1,4 @@
+import offCanvas from '../lib/canvas/off.js';
 import createBoat from '../obj/boat.js';
 import mulberry from '../lib/math/mulberry.js';
 
@@ -172,6 +173,10 @@ export default (obj = {}) => {
 
         obj.state.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Aqua', 'c14': 'Aqua'});
 
+        // offCanvas size
+        obj.w = 40 * nCols;
+        obj.h = 40 * nRows;
+
         // on each 0 add a boat
         let angles = [0, 90, 180, 270];
         boats = [];
@@ -236,27 +241,17 @@ export default (obj = {}) => {
         obj.state.on('pointerup', clickGrid);
     });
 
-    let offCanvas = new OffscreenCanvas(40, 40);
-    let offCtx = offCanvas.getContext('2d');
+    offCanvas(obj);
 
     obj.state.on('draw', e => {
-        let {ctx, cx, cy} = e;
-        let {vw, vh} = obj.state.last('resize');
+        let {ctx} = e;
 
-        offCanvas.width = 40 * nCols;
-        offCanvas.height = 40 * nRows;
         for (let y = 0; y < nRows; y++) {
             for (let x = 0; x < nCols; x++) {
-                offCtx.fillStyle = obj.state.last('color')[`c${grid[y][x]}`];
-                offCtx.fillRect(x * 40, y * 40, 40, 40);
+                ctx.fillStyle = obj.state.last('color')[`c${grid[y][x]}`];
+                ctx.fillRect(x * 40, y * 40, 40, 40);
             }
         }
-        boats.forEach(boat => boat.draw({ctx: offCtx}));
-        
-        let bgPattern = ctx.createPattern(offCanvas, 'repeat');
-        ctx.fillStyle = bgPattern;
-        ctx.translate(-cx, -cy);
-        ctx.fillRect(cx, cy, vw, vh);
-        ctx.translate(cx, cy);
+        boats.forEach(boat => boat.draw(e));
     });
 };
