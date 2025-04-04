@@ -24,7 +24,6 @@ export default (obj = {}) => {
         obj.y = vh / 2 - obj.h / 2;
     };
     obj.state.on('resize', resize);
-    obj.state.on('draw', obj.draw);
     obj.pointer.on('pointerdown', () => {
         obj.fills = ['white', 'black'];
     });
