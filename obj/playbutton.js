@@ -20,7 +20,7 @@ export default (obj = {}) => {
     Object.assign(obj, defaults);
     path(obj);
     pointarea(obj);
-    let day = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    let day = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
     let achievements = data.getItem('achievements') || [];
     let done = true;
     if (achievements.indexOf(day) === -1) {
@@ -35,11 +35,11 @@ export default (obj = {}) => {
     obj.state.on('step', e => {
         if (done) {
             // hours until midnight (padded to 2 digits)
-            let hours = String(24 - new Date().getHours()).padStart(2, '0');
-            let minutes = String(60 - new Date().getMinutes()).padStart(2, '0');
-            let seconds = String(60 - new Date().getSeconds()).padStart(2, '0');
+            let hours = String(23 - new Date().getHours()).padStart(2, '0');
+            let minutes = String(59 - new Date().getMinutes()).padStart(2, '0');
+            let seconds = String(59 - new Date().getSeconds()).padStart(2, '0');
             let time = `${hours}:${minutes}:${seconds}`;
-            let newDay = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+            let newDay = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
             txt.text = time;
             if (newDay !== day) {
                 obj.state.stop('level');
