@@ -1,5 +1,6 @@
 import offCanvas from '../lib/canvas/off.js';
 import data from '../lib/data/kv.js';
+import currentDay from '../lib/time/day.js';
 import createBoat from '../obj/boat.js';
 import mulberry from '../lib/math/mulberry.js';
 
@@ -19,8 +20,7 @@ export default (obj = {}) => {
     nRows = 14;
     nCols = 14;
 
-    // Number of days since 2025-01-01
-    let day = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
+    let day = currentDay();
     let getRandom = mulberry(day);
 
     // Reset all to 0

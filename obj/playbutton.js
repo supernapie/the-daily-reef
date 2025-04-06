@@ -1,4 +1,5 @@
 import data from '../lib/data/kv.js';
+import currentDay from '../lib/time/day.js';
 import text from '../lib/draw/text.js';
 import path from '../lib/draw/path.js';
 import pointarea from '../lib/pointer/rect.js';
@@ -20,7 +21,8 @@ export default (obj = {}) => {
     Object.assign(obj, defaults);
     path(obj);
     pointarea(obj);
-    let day = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
+    let day = currentDay();
+    console.log('day', day);
     let achievements = data.getItem('achievements') || [];
     let done = true;
     if (achievements.indexOf(day) === -1) {
@@ -39,7 +41,7 @@ export default (obj = {}) => {
             let minutes = String(59 - new Date().getMinutes()).padStart(2, '0');
             let seconds = String(59 - new Date().getSeconds()).padStart(2, '0');
             let time = `${hours}:${minutes}:${seconds}`;
-            let newDay = Math.floor((Date.now() - new Date('2025-01-01').getMilliseconds()) / 86400000);
+            let newDay = currentDay();
             txt.text = time;
             if (newDay !== day) {
                 obj.state.stop('level');
