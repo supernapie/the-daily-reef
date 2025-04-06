@@ -2,29 +2,21 @@ import offCanvas from '../lib/canvas/off.js';
 import data from '../lib/data/kv.js';
 import currentDay from '../lib/time/day.js';
 import createBoat from '../obj/boat.js';
+import createGrid from '../lib/math/grid.js';
 import mulberry from '../lib/math/mulberry.js';
 
 export default (obj = {}) => {
 
-    offCanvas(obj);
-
-    // a grid
-    let nRows = 14;
-    let nCols = 14;
-    let grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
-
-    let boats = [];
-
-    let {vw, vh} = obj.state.last('resize');
-
-    nRows = 14;
-    nCols = 14;
-
     let day = currentDay();
     let getRandom = mulberry(day);
 
-    // Reset all to 0
-    grid = Array(nRows).fill(0).map(() => Array(nCols).fill(0));
+    offCanvas(obj);
+
+    // a grid
+    obj.nCols = 14;
+    obj.nRows = 14;
+    obj.tileSize = 40;
+    let {nRows, nCols, grid} = createGrid(obj);
 
     // Add one number 13 to the grid in a random position
     let position = {
@@ -191,7 +183,7 @@ export default (obj = {}) => {
 
     // on each 0 add a boat
     let angles = [0, 90, 180, 270];
-    boats = [];
+    let boats = [];
     for (let y = 0; y < nRows; y++) {
         for (let x = 0; x < nCols; x++) {
             if (grid[y][x] === 0) {
@@ -261,4 +253,5 @@ export default (obj = {}) => {
         }
     };
     obj.state.on('pointerup', clickGrid);
+    return obj;
 };
