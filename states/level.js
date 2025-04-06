@@ -5,8 +5,10 @@ import createMenubutton from '../obj/menubutton.js';
 
 let level = state();
 level.on('start', () => {
-    createCam({state: level});
-    createSea({state: level});
+    let cam = createCam({state: level});
+    let sea = createSea({state: level});
+    cam.x = cam.target.x = sea.w / 2;
+    cam.y = cam.target.y = sea.h / 2;
     createMenubutton({state: level});
 });
 

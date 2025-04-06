@@ -13,6 +13,7 @@ export default (obj = {}) => {
     let getRandom = mulberry(day);
 
     offCanvas(obj);
+    //obj.repetition = 'no-repeat';
 
     // a grid
     obj.nCols = 14;
