@@ -22,7 +22,6 @@ export default (obj = {}) => {
     path(obj);
     pointarea(obj);
     let day = currentDay();
-    console.log('day', day);
     let achievements = data.getItem('achievements') || [];
     let done = true;
     if (achievements.indexOf(day) === -1) {
