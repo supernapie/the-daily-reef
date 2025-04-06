@@ -4,6 +4,7 @@ import currentDay from '../lib/time/day.js';
 import createBoat from '../obj/boat.js';
 import createGrid from '../lib/math/grid.js';
 import drawGrid from '../lib/draw/grid.js';
+import gridPointer from '../lib/pointer/grid.js';
 import mulberry from '../lib/math/mulberry.js';
 
 
@@ -211,26 +212,15 @@ export default (obj = {}) => {
     boats.forEach(boat => boat.move(grid));
 
     let clickGrid = e => {
-        let {cam, cx: tx, cy: ty} = e;
-        while (tx < 0) {
-            tx += 40 * nCols;
-        }
-        while (ty < 0) {
-            ty += 40 * nRows;
-        }
-        let gx = Math.floor(tx / 40) % nCols;
-        let gy = Math.floor(ty / 40) % nRows;
-        if (gx < 0 || gx >= nCols || gy < 0 || gy >= nRows) {
-            return;
-        }
-        let value = grid[gy][gx];
+        let {value, x, y, cam} = e;
+
         if (value === 1 || value === 14) {
             // find boat and move it
-            let boat = boats.find(b => b.gx === gx && b.gy === gy);
+            let boat = boats.find(b => b.gx === x && b.gy === y);
             if (boat) {
                 let {dx, dy} = boat.move(grid);
-                cam.target.x += dx * 40;
-                cam.target.y += dy * 40;
+                cam.target.x += dx * obj.tileSize;
+                cam.target.y += dy * obj.tileSize;
             }
         }
         if (value === 14) {
@@ -239,7 +229,7 @@ export default (obj = {}) => {
             if (grid.flat().includes(14)) {
                 return;
             }
-            obj.state.off('pointerup', clickGrid);
+            obj.pointer.off('pointerup', clickGrid);
             // show solution
             obj.fills[13] = 'Coral';
             obj.fills[14] = 'Coral';
@@ -248,6 +238,7 @@ export default (obj = {}) => {
             data.setItem('achievements', achievements);
         }
     };
-    obj.state.on('pointerup', clickGrid);
+    gridPointer(obj);
+    obj.pointer.on('pointerup', clickGrid);
     return obj;
 };
