@@ -3,7 +3,9 @@ import data from '../lib/data/kv.js';
 import currentDay from '../lib/time/day.js';
 import createBoat from '../obj/boat.js';
 import createGrid from '../lib/math/grid.js';
+import drawGrid from '../lib/draw/grid.js';
 import mulberry from '../lib/math/mulberry.js';
+
 
 export default (obj = {}) => {
 
@@ -164,22 +166,14 @@ export default (obj = {}) => {
     grid[start.y][start.x] = 0;
     grid[target.y][target.x] = 0;
 
-    obj.state.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Aqua', 'c14': 'Aqua'});
+    obj.grid = grid;
+    obj.nRows = nRows;
+    obj.nCols = nCols;
+    obj.updateGridWH();
 
-    // offCanvas size
-    obj.w = 40 * nCols;
-    obj.h = 40 * nRows;
-
-    obj.state.on('draw', e => {
-        let {ctx} = e;
-
-        for (let y = 0; y < nRows; y++) {
-            for (let x = 0; x < nCols; x++) {
-                ctx.fillStyle = obj.state.last('color')[`c${grid[y][x]}`];
-                ctx.fillRect(x * 40, y * 40, 40, 40);
-            }
-        }
-    });
+    drawGrid(obj);
+    obj.fills = new Array(15).fill('Aqua');
+    obj.fills[2] = 'SandyBrown';
 
     // on each 0 add a boat
     let angles = [0, 90, 180, 270];
@@ -246,7 +240,8 @@ export default (obj = {}) => {
             }
             obj.state.off('pointerup', clickGrid);
             // show solution
-            obj.state.emit('color', {'c0': 'Aqua', 'c1': 'Aqua', 'c2': 'SandyBrown', 'c3': 'Aqua', 'c13': 'Coral', 'c14': 'Coral'});
+            obj.fills[13] = 'Coral';
+            obj.fills[14] = 'Coral';
             let achievements = data.getItem('achievements') || [];
             achievements.push(day);
             data.setItem('achievements', achievements);
