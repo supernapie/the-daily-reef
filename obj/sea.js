@@ -211,6 +211,7 @@ export default (obj = {}) => {
     // Now move the boats a bit before starting
     boats.forEach(boat => boat.move(grid));
 
+    gridPointer(obj);
     let clickGrid = e => {
         let {value, x, y, cam} = e;
 
@@ -238,7 +239,7 @@ export default (obj = {}) => {
             data.setItem('achievements', achievements);
         }
     };
-    gridPointer(obj);
     obj.pointer.on('pointerup', clickGrid);
+
     return obj;
 };
