@@ -1,8 +1,7 @@
 import currentDay from '../lib/time/day.js';
-import createGrid from '../lib/math/grid.js';
-import drawGrid from '../lib/draw/grid.js';
 import mulberry from '../lib/math/mulberry.js';
-
+import createPolyomino from '../lib/math/polyomino.js';
+import drawGrid from '../lib/draw/grid.js';
 
 export default (obj = {}) => {
 
@@ -10,89 +9,18 @@ export default (obj = {}) => {
     let getRandom = mulberry(day);
 
     // a grid
-    obj.nCols = 14;
-    obj.nRows = 14;
+    obj.nMinos = 13; // a tridecomino
     obj.tileSize = 40;
-    let {nRows, nCols, grid} = createGrid(obj);
+    obj.getRandom = getRandom;
+    let {nRows, nCols, grid} = createPolyomino(obj);
 
-    // Add one number 13 to the grid in a random position
-    let position = {
-        x: Math.floor(getRandom() * nCols),
-        y: Math.floor(getRandom() * nRows)
-    };
-    grid[position.y][position.x] = 13;
-
-    // Around this position, create polyomino of 13 (tridecomino)
-    let directions = [
-        {dx: 1, dy: 0},
-        {dx: 0, dy: 1},
-        {dx: -1, dy: 0},
-        {dx: 0, dy: -1}
-    ];
-    let nMino = 1;
-    let nMinoMax = 13;
-    let direction = directions[Math.floor(getRandom() * directions.length)];
-    while (nMino < nMinoMax) {
-        let newPosition = {
-            x: position.x + direction.dx,
-            y: position.y + direction.dy
-        };
-        if (newPosition.x < 0) {
-            newPosition.x += nCols;
-        }
-        if (newPosition.x >= nCols) {
-            newPosition.x -= nCols;
-        }
-        if (newPosition.y < 0) {
-            newPosition.y += nRows;
-        }
-        if (newPosition.y >= nRows) {
-            newPosition.y -= nRows;
-        }
-        if (grid[newPosition.y][newPosition.x] === 0) {
-            grid[newPosition.y][newPosition.x] = nMinoMax;
-            // to prevent being closed in by the polyomino
-            // only change direction if there is a free cell
-            // To ponder about: does this create all possible polyominos?
-            direction = directions[Math.floor(getRandom() * directions.length)];
-            nMino++;
-        }
-        position = newPosition;
-    }
-
-    // remove all rows and columns that are empty, and have adjacent empty rows or columns
-    // remove rows
-    grid = grid.filter((row, y) => row.some((valueA) => {
-        return valueA !== 0 || grid[(y + 1) % nRows].some((valueB) => valueB !== 0);
-    }));
-    // remove columns
-    let emptyCols = Array(nCols).fill(0);
-    emptyCols = emptyCols.map((value, x) => grid.every(row => row[x] === 0));
-    grid = grid.map((row) => row.filter((value, x) => {
-        return value !== 0 || !emptyCols[x] || !emptyCols[(x + 1) % nCols];
-    }));
-
-    // update nRows and nCols
-    nRows = grid.length;
-    nCols = grid[0].length;
-
-    // Place a 1 where the remaining empty row and column intersect
-    // This is the starting point for the player
-    let emptyRow = grid.findIndex(row => row.every(value => value === 0));
-    let emptyCol = grid[0].findIndex((value, x) => grid.every(row => row[x] === 0));
-    let start = {x: emptyCol, y: emptyRow};
-
-    // Switch rows and columns to make the start point the top left corner
-    while (start.y > 0) {
-        grid.push(grid.shift());
-        start.y--;
-    }
-    while (start.x > 0) {
-        grid.forEach(row => row.push(row.shift()));
-        start.x--;
-    }
+    // Add a row of 0s to the top of the grid
+    grid.unshift(Array(nCols).fill(0));
+    // Add a column of 0s to the left of the grid
+    grid = grid.map(row => [0].concat(row));
 
     // Add the start to the grid
+    let start = {x: 0, y: 0};
     grid[start.y][start.x] = 1;
 
     // Add a row of 0s to the bottom of the grid
@@ -107,11 +35,11 @@ export default (obj = {}) => {
 
     // Move the start and target diagonally closer to each other
     // Until they are adjecent to a 13
-    directions = [
+    let directions = [
         {dx: 1, dy: 0},
         {dx: 0, dy: 1}
     ];
-    direction = directions[0];
+    let direction = directions[0];
     grid[start.y][start.x] = 0;
     while (grid[start.y + direction.dy][start.x + direction.dx] !== 13) {
         start.x += direction.dx;

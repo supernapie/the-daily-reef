@@ -68,6 +68,9 @@ export default (obj = {}) => {
             // show solution
             obj.fills[13] = 'Coral';
             obj.fills[14] = 'Coral';
+            // center grid
+            //cam.target.x = obj.w / 2;
+            //cam.target.y = obj.h / 2;
             let achievements = data.getItem('achievements') || [];
             achievements.push(day);
             data.setItem('achievements', achievements);
