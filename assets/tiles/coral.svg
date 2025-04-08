@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Adobe Illustrator 24.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
+	 height="40px" viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+</style>
+<g id="_x30__no_tiles_around">
+	<path class="st0" d="M4,20C4,20,4,20,4,20C6.48,14.92,14.67,5.89,20,4c0,0,0,0,0,0c5.1,2.45,14.12,10.66,16,16c0,0,0,0,0,0
+		c-2.44,5.1-10.66,14.12-16,16c0,0,0,0,0,0C14.76,33.88,6.16,25.23,4,20z"/>
+</g>
+<g id="_x31__top">
+	<path class="st0" d="M32,0v20c0,6.63-5.37,12-12,12h0c-6.63,0-12-5.37-12-12V0"/>
+</g>
+<g id="_x32__right">
+	<path class="st0" d="M40,32H20c-6.63,0-12-5.37-12-12v0c0-6.63,5.37-12,12-12h20"/>
+</g>
+<g id="_x33__top_and_right">
+	<path class="st0" d="M32,4V0H8v20c0,6.63,5.37,12,12,12h20V8h-4C33.79,8,32,6.21,32,4z"/>
+</g>
+<g id="_x34__bottom">
+	<path class="st0" d="M8,40l0-20c0-6.63,5.37-12,12-12h0c6.63,0,12,5.37,12,12l0,20"/>
+</g>
+<g id="_x35__bottom_and_top">
+	<rect x="8" y="0" class="st0" width="24" height="40"/>
+</g>
+<g id="_x36__bottom_and_right">
+	<path class="st0" d="M36,32h4V8H20C13.37,8,8,13.37,8,20v20h24v-4C32,33.79,33.79,32,36,32z"/>
+</g>
+<g id="_x37__bottom_and_right_and_top">
+	<path class="st0" d="M40,8h-4c-2.21,0-4-1.79-4-4V0H8v40h24v-4c0-2.21,1.79-4,4-4h4V8z"/>
+</g>
+<g id="_x38__left">
+	<path class="st0" d="M0,8l20,0c6.63,0,12,5.37,12,12v0c0,6.63-5.37,12-12,12L0,32"/>
+</g>
+<g id="_x39__left_and_top">
+	<path class="st0" d="M4,8H0v24h20c6.63,0,12-5.37,12-12V0H8v4C8,6.21,6.21,8,4,8z"/>
+</g>
+<g id="_x31_0_left_and_right">
+	<rect x="0" y="8" class="st0" width="40" height="24"/>
+</g>
+<g id="_x31_1_left_and_top_and_right">
+	<path class="st0" d="M8,0v4c0,2.21-1.79,4-4,4H0v24h40V8h-4c-2.21,0-4-1.79-4-4V0H8z"/>
+</g>
+<g id="_x31_2_left_and_bottom">
+	<path class="st0" d="M8,36v4h24V20c0-6.63-5.37-12-12-12H0v24h4C6.21,32,8,33.79,8,36z"/>
+</g>
+<g id="_x31_3_left_and_top_and_bottom">
+	<path class="st0" d="M0,32h4c2.21,0,4,1.79,4,4l0,4l24,0l0-40L8,0l0,4c0,2.21-1.79,4-4,4L0,8L0,32z"/>
+</g>
+<g id="_x31_4_left_and_right_and_bottom">
+	<path class="st0" d="M32,40l0-4c0-2.21,1.79-4,4-4l4,0l0-24L0,8l0,24h4c2.21,0,4,1.79,4,4l0,4L32,40z"/>
+</g>
+<g id="_x31_5_all">
+	<path class="st0" d="M36,8c-2.21,0-4-1.79-4-4V0H8v4c0,2.21-1.79,4-4,4H0v24h4c2.21,0,4,1.79,4,4v4h24v-4c0-2.21,1.79-4,4-4h4V8H36
+		z"/>
+</g>
+</svg>

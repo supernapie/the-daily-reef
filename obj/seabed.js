@@ -2,6 +2,7 @@ import currentDay from '../lib/time/day.js';
 import mulberry from '../lib/math/mulberry.js';
 import createPolyomino from '../lib/math/polyomino.js';
 import drawGrid from '../lib/draw/grid.js';
+import drawTiles from '../lib/draw/tiles.js';
 
 export default (obj = {}) => {
 
@@ -95,6 +96,8 @@ export default (obj = {}) => {
     obj.updateGridWH();
 
     drawGrid(obj);
+    //obj.url = '../assets/tiles/coral.svg';
+    //drawTiles(obj);
     obj.fills = new Array(15).fill('Aqua');
     obj.fills[2] = 'SandyBrown';
 
