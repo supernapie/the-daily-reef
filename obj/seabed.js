@@ -1,8 +1,8 @@
+import coral from './coral.js';
 import currentDay from '../lib/time/day.js';
 import mulberry from '../lib/math/mulberry.js';
 import createPolyomino from '../lib/math/polyomino.js';
 import drawGrid from '../lib/draw/grid.js';
-import drawTiles from '../lib/draw/tiles.js';
 
 export default (obj = {}) => {
 
@@ -15,10 +15,22 @@ export default (obj = {}) => {
     obj.getRandom = getRandom;
     let {nRows, nCols, grid} = createPolyomino(obj);
 
+    // copy the grid
+    let solvedCoral = {};
+    solvedCoral.state = obj.state;
+    solvedCoral.grid = grid.map(row => row.slice());
+
+    // replace the 1s with 13s
+    grid = grid.map(row => row.map(col => col === 1 ? 13 : col));
+
     // Add a row of 0s to the top of the grid
     grid.unshift(Array(nCols).fill(0));
     // Add a column of 0s to the left of the grid
     grid = grid.map(row => [0].concat(row));
+
+    // move solvedCoral accordingly
+    solvedCoral.x = obj.tileSize;
+    solvedCoral.y = obj.tileSize;
 
     // Add the start to the grid
     let start = {x: 0, y: 0};
@@ -96,10 +108,11 @@ export default (obj = {}) => {
     obj.updateGridWH();
 
     drawGrid(obj);
-    //obj.url = '../assets/tiles/coral.svg';
-    //drawTiles(obj);
     obj.fills = new Array(15).fill('Aqua');
     obj.fills[2] = 'SandyBrown';
+
+    coral(solvedCoral);
+    obj.solution = solvedCoral;
 
     return obj;
 };

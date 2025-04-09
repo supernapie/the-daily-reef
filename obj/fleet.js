@@ -66,8 +66,9 @@ export default (obj = {}) => {
             }
             obj.pointer.off('pointerup', clickGrid);
             // show solution
-            obj.fills[13] = 'Coral';
-            obj.fills[14] = 'Coral';
+            //obj.fills[13] = 'Coral';
+            //obj.fills[14] = 'Coral';
+            obj.solution.show();
             // center grid
             //cam.target.x = obj.w / 2;
             //cam.target.y = obj.h / 2;
