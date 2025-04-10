@@ -4,13 +4,12 @@ let d = 'M28,10C23.46,7.85,11.54,4.43,8,8c-4.22,4.26-4.85,20.46,0,24c4.06,2.96,1
 
 export default (obj = {}) => {
     let defaults = {
-        paths: [d],
+        paths: [{d, fill: 'Coral'}],
         x: 0,
         y: 0,
         w: 40,
         h: 40,
         a: 0,
-        fills: ['Coral'],
         gx: 0,
         gy: 0
     };
@@ -52,7 +51,7 @@ export default (obj = {}) => {
             dx = 0;
             dy = 0;
         }
-        obj.fills = grid[obj.gy][obj.gx] === 14 ? ['Coral'] : ['Seashell'];
+        obj.paths[0].fill = grid[obj.gy][obj.gx] === 14 ? 'Coral' : 'Seashell';
         return {dx, dy};
     };
     return obj;

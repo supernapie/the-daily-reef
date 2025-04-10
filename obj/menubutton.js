@@ -10,9 +10,7 @@ export default (obj = {}) => {
         w: 40,
         h: 40,
         a: 0,
-        url: '../assets/paths/compass.svg',
-        paths: [],
-        fills: ['black']
+        url: '../assets/paths/compass.svg'
     };
     Object.assign(defaults, obj);
     Object.assign(obj, defaults);

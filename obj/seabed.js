@@ -1,8 +1,8 @@
 import coral from './coral.js';
+import jetty from './jetty.js';
 import currentDay from '../lib/time/day.js';
 import mulberry from '../lib/math/mulberry.js';
 import createPolyomino from '../lib/math/polyomino.js';
-import drawGrid from '../lib/draw/grid.js';
 
 export default (obj = {}) => {
 
@@ -107,9 +107,10 @@ export default (obj = {}) => {
     obj.nCols = nCols;
     obj.updateGridWH();
 
-    drawGrid(obj);
-    obj.fills = new Array(15).fill('Aqua');
-    obj.fills[2] = 'SandyBrown';
+    let jettyDeco = {};
+    jettyDeco.state = obj.state;
+    jettyDeco.grid = grid.map(row => row.map(col => col === 2 ? 1 : 0));
+    jetty(jettyDeco);
 
     coral(solvedCoral);
     obj.solution = solvedCoral;

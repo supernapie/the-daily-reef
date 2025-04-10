@@ -9,13 +9,12 @@ let t = 'M 64 32 L 192 64 L 64 96 Z';
 
 export default (obj = {}) => {
     let defaults = {
-        paths: [r],
+        paths: [{d: r, fill: 'black'}],
         x: 0,
         y: 0,
         w: 256,
         h: 128,
-        a: 0,
-        fills: ['black']
+        a: 0
     };
     Object.assign(defaults, obj);
     Object.assign(obj, defaults);
@@ -50,11 +49,7 @@ export default (obj = {}) => {
         txt.y = obj.y + obj.h / 2 - txt.h / 2;
     });
     if (!done) {
-        obj.pointer.on('pointerdown', () => {
-            obj.fills = ['white'];
-        });
         obj.pointer.on('pointerup', () => {
-            obj.fills = ['black'];
             obj.state.stop('level');
         });
     }
