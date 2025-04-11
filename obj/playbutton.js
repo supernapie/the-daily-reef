@@ -4,16 +4,15 @@ import text from '../lib/draw/text.js';
 import path from '../lib/draw/path.js';
 import pointarea from '../lib/pointer/rect.js';
 
-let r = 'M 0 0 L 256 0 L 256 128 L 0 128 Z';
-let t = 'M 64 32 L 192 64 L 64 96 Z';
+let r = 'M 0 0 L 208 0 L 208 156 L 0 156 Z';
 
 export default (obj = {}) => {
     let defaults = {
-        paths: [{d: r, fill: 'black'}],
+        paths: [{d: r, fill: '#074F57'}],
         x: 0,
         y: 0,
-        w: 256,
-        h: 128,
+        w: 208,
+        h: 156,
         a: 0
     };
     Object.assign(defaults, obj);
@@ -26,7 +25,7 @@ export default (obj = {}) => {
     if (achievements.indexOf(day) === -1) {
         done = false;
     }
-    let txt = text({state: obj.state, fill: 'white', text: 'Play'});
+    let txt = text({state: obj.state, fill: '#074F57', text: 'Play'});
     obj.state.on('resize', e => {
         let {vw, vh} = e;
         obj.x = vw / 2 - obj.w / 2;
@@ -46,7 +45,7 @@ export default (obj = {}) => {
             }
         }
         txt.x = obj.x + obj.w / 2 - txt.w / 2;
-        txt.y = obj.y + obj.h / 2 - txt.h / 2;
+        txt.y = obj.y + obj.h + 28;
     });
     if (!done) {
         obj.pointer.on('pointerup', () => {
