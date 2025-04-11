@@ -3,144 +3,151 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
 	 height="40px" viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#F4A460;}
-	.st1{fill:#00E6E6;}
-	.st2{fill:#DB9456;}
-	.st3{fill:#C2834C;}
+	.st0{fill:#00E6E6;}
+	.st1{fill:#DB9456;}
+	.st2{fill:#C2834C;}
+	.st3{fill:#F4A460;}
 </style>
 <g id="_x30__no_tiles_around">
-	<path class="st0" d="M4,20C4,20,4,20,4,20C6.48,14.92,14.67,5.89,20,4c0,0,0,0,0,0c5.1,2.45,14.12,10.66,16,16c0,0,0,0,0,0
-		c-2.44,5.1-10.66,14.12-16,16c0,0,0,0,0,0C14.76,33.88,6.16,25.23,4,20z"/>
+	<g>
+		<rect x="8" y="8" class="st0" width="24" height="28"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
+	</g>
+	<polyline class="st3" points="32,8 32,32 8,32 8,8 	"/>
+	<rect x="8" y="28" class="st1" width="24" height="4"/>
 </g>
 <g id="_x31__top">
 	<g>
-		<rect x="8" class="st1" width="24" height="36"/>
-		<rect x="10" y="32" class="st2" width="4" height="6"/>
-		<rect x="10" y="32" class="st3" width="4" height="2"/>
-		<rect x="26" y="32" class="st2" width="4" height="6"/>
-		<rect x="26" y="32" class="st3" width="4" height="2"/>
+		<rect x="8" class="st0" width="24" height="36"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polyline class="st0" points="32,0 32,32 8,32 8,0 	"/>
-	<rect x="8" y="28" class="st2" width="24" height="4"/>
+	<polyline class="st3" points="32,0 32,32 8,32 8,0 	"/>
+	<rect x="8" y="28" class="st1" width="24" height="4"/>
 </g>
 <g id="_x32__right">
 	<g>
-		<rect x="8" y="8" class="st1" width="32" height="28"/>
-		<rect x="10" y="32" class="st2" width="4" height="6"/>
-		<rect x="10" y="32" class="st3" width="4" height="2"/>
-		<rect x="26" y="32" class="st2" width="4" height="6"/>
-		<rect x="26" y="32" class="st3" width="4" height="2"/>
+		<rect x="8" y="8" class="st0" width="32" height="28"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polyline class="st0" points="40,32 8,32 8,8 40,8 	"/>
-	<rect x="8" y="28" class="st2" width="32" height="4"/>
+	<polyline class="st3" points="40,32 8,32 8,8 40,8 	"/>
+	<rect x="8" y="28" class="st1" width="32" height="4"/>
 </g>
 <g id="_x33__top_and_right">
 	<g>
-		<rect x="8" y="8" class="st1" width="32" height="28"/>
-		<rect x="10" y="32" class="st2" width="4" height="6"/>
-		<rect x="10" y="32" class="st3" width="4" height="2"/>
-		<rect x="26" y="32" class="st2" width="4" height="6"/>
-		<rect x="26" y="32" class="st3" width="4" height="2"/>
+		<rect x="8" y="8" class="st0" width="32" height="28"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polygon class="st0" points="32,8 32,0 8,0 8,32 40,32 40,8 	"/>
-	<rect x="8" y="28" class="st2" width="32" height="4"/>
+	<polygon class="st3" points="32,8 32,0 8,0 8,32 40,32 40,8 	"/>
+	<rect x="8" y="28" class="st1" width="32" height="4"/>
 </g>
 <g id="_x34__bottom">
-	<polyline class="st0" points="8,40 8,8 32,8 32,40 	"/>
+	<polyline class="st3" points="8,40 8,8 32,8 32,40 	"/>
 </g>
 <g id="_x35__bottom_and_top">
-	<rect x="8" y="0" class="st0" width="24" height="40"/>
+	<rect x="8" y="0" class="st3" width="24" height="40"/>
 </g>
 <g id="_x36__bottom_and_right">
 	<g>
-		<rect x="8" y="8" class="st1" width="32" height="28"/>
+		<rect x="8" y="8" class="st0" width="32" height="28"/>
 	</g>
-	<polygon class="st0" points="32,32 40,32 40,8 8,8 8,40 32,40 	"/>
-	<rect x="32" y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="32,32 40,32 40,8 8,8 8,40 32,40 	"/>
+	<rect x="32" y="28" class="st1" width="8" height="4"/>
 </g>
 <g id="_x37__bottom_and_right_and_top">
 	<g>
-		<rect x="8" y="8" class="st1" width="32" height="28"/>
+		<rect x="8" y="8" class="st0" width="32" height="28"/>
 	</g>
-	<polygon class="st0" points="40,8 32,8 32,0 8,0 8,40 32,40 32,32 40,32 	"/>
-	<rect x="32" y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="40,8 32,8 32,0 8,0 8,40 32,40 32,32 40,32 	"/>
+	<rect x="32" y="28" class="st1" width="8" height="4"/>
 </g>
 <g id="_x38__left">
 	<g>
-		<rect x="0" y="8" class="st1" width="32" height="28"/>
-		<rect x="10" y="32" class="st2" width="4" height="6"/>
-		<rect x="10" y="32" class="st3" width="4" height="2"/>
-		<rect x="26" y="32" class="st2" width="4" height="6"/>
-		<rect x="26" y="32" class="st3" width="4" height="2"/>
+		<rect x="0" y="8" class="st0" width="32" height="28"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polyline class="st0" points="0,8 32,8 32,32 0,32 	"/>
-	<rect y="28" class="st2" width="32" height="4"/>
+	<polyline class="st3" points="0,8 32,8 32,32 0,32 	"/>
+	<rect y="28" class="st1" width="32" height="4"/>
 </g>
 <g id="_x39__left_and_top">
 	<g>
-		<rect x="0" y="8" class="st1" width="32" height="28"/>
-		<rect x="10" y="32" class="st2" width="4" height="6"/>
-		<rect x="10" y="32" class="st3" width="4" height="2"/>
-		<rect x="26" y="32" class="st2" width="4" height="6"/>
-		<rect x="26" y="32" class="st3" width="4" height="2"/>
+		<rect x="0" y="8" class="st0" width="32" height="28"/>
+		<rect x="10" y="32" class="st1" width="4" height="6"/>
+		<rect x="10" y="32" class="st2" width="4" height="2"/>
+		<rect x="26" y="32" class="st1" width="4" height="6"/>
+		<rect x="26" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polygon class="st0" points="8,8 0,8 0,32 32,32 32,0 8,0 	"/>
-	<rect y="28" class="st2" width="32" height="4"/>
+	<polygon class="st3" points="8,8 0,8 0,32 32,32 32,0 8,0 	"/>
+	<rect y="28" class="st1" width="32" height="4"/>
 </g>
 <g id="_x31_0_left_and_right">
 	<g>
-		<rect x="0" y="8" class="st1" width="40" height="28"/>
-		<rect x="2" y="32" class="st2" width="4" height="6"/>
-		<rect x="2" y="32" class="st3" width="4" height="2"/>
-		<rect x="18" y="32" class="st2" width="4" height="6"/>
-		<rect x="18" y="32" class="st3" width="4" height="2"/>
-		<rect x="34" y="32" class="st2" width="4" height="6"/>
-		<rect x="34" y="32" class="st3" width="4" height="2"/>
+		<rect x="0" y="8" class="st0" width="40" height="28"/>
+		<rect x="2" y="32" class="st1" width="4" height="6"/>
+		<rect x="2" y="32" class="st2" width="4" height="2"/>
+		<rect x="18" y="32" class="st1" width="4" height="6"/>
+		<rect x="18" y="32" class="st2" width="4" height="2"/>
+		<rect x="34" y="32" class="st1" width="4" height="6"/>
+		<rect x="34" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<rect x="0" y="8" class="st0" width="40" height="24"/>
-	<rect y="28" class="st2" width="40" height="4"/>
+	<rect x="0" y="8" class="st3" width="40" height="24"/>
+	<rect y="28" class="st1" width="40" height="4"/>
 </g>
 <g id="_x31_1_left_and_top_and_right">
 	<g>
-		<rect x="0" y="8" class="st1" width="40" height="28"/>
-		<rect x="2" y="32" class="st2" width="4" height="6"/>
-		<rect x="2" y="32" class="st3" width="4" height="2"/>
-		<rect x="18" y="32" class="st2" width="4" height="6"/>
-		<rect x="18" y="32" class="st3" width="4" height="2"/>
-		<rect x="34" y="32" class="st2" width="4" height="6"/>
-		<rect x="34" y="32" class="st3" width="4" height="2"/>
+		<rect x="0" y="8" class="st0" width="40" height="28"/>
+		<rect x="2" y="32" class="st1" width="4" height="6"/>
+		<rect x="2" y="32" class="st2" width="4" height="2"/>
+		<rect x="18" y="32" class="st1" width="4" height="6"/>
+		<rect x="18" y="32" class="st2" width="4" height="2"/>
+		<rect x="34" y="32" class="st1" width="4" height="6"/>
+		<rect x="34" y="32" class="st2" width="4" height="2"/>
 	</g>
-	<polygon class="st0" points="8,0 8,8 0,8 0,32 40,32 40,8 32,8 32,0 	"/>
-	<rect y="28" class="st2" width="40" height="4"/>
+	<polygon class="st3" points="8,0 8,8 0,8 0,32 40,32 40,8 32,8 32,0 	"/>
+	<rect y="28" class="st1" width="40" height="4"/>
 </g>
 <g id="_x31_2_left_and_bottom">
 	<g>
-		<rect x="0" y="8" class="st1" width="32" height="28"/>
+		<rect x="0" y="8" class="st0" width="32" height="28"/>
 	</g>
-	<polygon class="st0" points="8,32 8,40 32,40 32,8 0,8 0,32 	"/>
-	<rect y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="8,32 8,40 32,40 32,8 0,8 0,32 	"/>
+	<rect y="28" class="st1" width="8" height="4"/>
 </g>
 <g id="_x31_3_left_and_top_and_bottom">
 	<g>
-		<rect x="0" y="8" class="st1" width="32" height="28"/>
+		<rect x="0" y="8" class="st0" width="32" height="28"/>
 	</g>
-	<polygon class="st0" points="0,32 8,32 8,40 32,40 32,0 8,0 8,8 0,8 	"/>
-	<rect y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="0,32 8,32 8,40 32,40 32,0 8,0 8,8 0,8 	"/>
+	<rect y="28" class="st1" width="8" height="4"/>
 </g>
 <g id="_x31_4_left_and_right_and_bottom">
 	<g>
-		<rect x="0" y="8" class="st1" width="40" height="28"/>
+		<rect x="0" y="8" class="st0" width="40" height="28"/>
 	</g>
-	<polygon class="st0" points="32,40 32,32 40,32 40,8 0,8 0,32 8,32 8,40 	"/>
-	<rect y="28" class="st2" width="8" height="4"/>
-	<rect x="32" y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="32,40 32,32 40,32 40,8 0,8 0,32 8,32 8,40 	"/>
+	<rect y="28" class="st1" width="8" height="4"/>
+	<rect x="32" y="28" class="st1" width="8" height="4"/>
 </g>
 <g id="_x31_5_all">
 	<g>
-		<rect x="0" y="8" class="st1" width="40" height="28"/>
+		<rect x="0" y="8" class="st0" width="40" height="28"/>
 	</g>
-	<polygon class="st0" points="40,8 32,8 32,0 8,0 8,8 0,8 0,32 8,32 8,40 32,40 32,32 40,32 	"/>
-	<rect y="28" class="st2" width="8" height="4"/>
-	<rect x="32" y="28" class="st2" width="8" height="4"/>
+	<polygon class="st3" points="40,8 32,8 32,0 8,0 8,8 0,8 0,32 8,32 8,40 32,40 32,32 40,32 	"/>
+	<rect y="28" class="st1" width="8" height="4"/>
+	<rect x="32" y="28" class="st1" width="8" height="4"/>
 </g>
 </svg>
